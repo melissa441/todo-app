@@ -6,7 +6,8 @@ import { AuthProvider } from "/src/context/AuthContext";
 import { getAuth, signOut } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Footer from "/src/components/footer";
+import Footer from "../components/Footer";
+
 
 function Dashboard() {
     const navigate = useNavigate();
