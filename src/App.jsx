@@ -4,6 +4,8 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./pages/Profile";
+import About from "./pages/About";
 
 export default function App() {
   return (
@@ -19,6 +21,10 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+      <Route path="/profile" element={
+            <ProtectedRoute><Profile /></ProtectedRoute>
+          } />
+          <Route path="/about" element={<About />} />
     </Routes>
   );
 }

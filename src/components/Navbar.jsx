@@ -1,10 +1,17 @@
 // components/Navbar.jsx
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ onLogout }) {
   const { user } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    setDropdownOpen(false); // close dropdown
+    navigate(path);
+  };
 
   return (
     <nav className="bg-white shadow-md p-4 flex justify-between items-center relative">
@@ -27,18 +34,18 @@ export default function Navbar({ onLogout }) {
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
               <button
                 className="block w-full text-left px-4 py-2 hover:bg-pink-50 text-pink-600"
-                onClick={() => alert("Go to Profile")}
+                onClick={() => handleNavigate("/profile")}
               >
                 Profile
               </button>
               <button
                 className="block w-full text-left px-4 py-2 hover:bg-pink-50 text-pink-600"
-                onClick={() => alert("Go to Settings")}
+                onClick={() => handleNavigate("/About")}
               >
-                Settings
+                About
               </button>
               <button
-                className="block w-full text-left px-4 py-2 hover:bg-pink-50 text-red-500"
+                className="block w-full text-left px-4 py-2 hover:bg-pink-50 text-pink-600"
                 onClick={onLogout}
               >
                 Logout
